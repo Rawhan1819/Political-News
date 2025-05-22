@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: RR-news  # ← change this to include YOUR name!
+    name: political-news-rawhan
     env: python
-    buildCommand: ""
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "python app.py"
     plan: free
