@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Political News Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Political News Finder</h1>
+        <form method="POST">
+            <input type="text" name="location" placeholder="Enter city or country" required>
+            <button type="submit">Get News</button>
+        </form>
+
+        {% if location %}
+            <h2>Results for: "{{ location }}"</h2>
+            {% if news %}
+                <ul class="news-list">
+                    {% for item in news %}
+                    <li>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                        <a href="{{ item.url }}" target="_blank">Read more 🔗</a>
+                        <small>Published: {{ item.publishedAt }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-news">⚠️ No political news found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
